@@ -14,10 +14,10 @@ import { WebrequestService } from './webrequest.service';
 export class ClientService {
   constructor(private webReqService: WebrequestService) {}
 
-  createClient(name: string) {
+  createClient(client: Client) {
     console.log('create a client');
     // Send web request to create client
-    return this.webReqService.post('clients/add', { name });
+    return this.webReqService.post('clients/add', client);
   }
 
   // 'Client validation failed: idNum: Path `idNum` is required., cellphoneNum: Path `cellphoneNum` is required.';

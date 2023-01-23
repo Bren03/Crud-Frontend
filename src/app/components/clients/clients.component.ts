@@ -7,6 +7,7 @@ import { Client } from '../../Client';
 import { CLIENTS } from '../../mock-clients';
 import { MatDialog } from '@angular/material/dialog';
 import { FormComponent } from '../form/form.component';
+import { WebrequestService } from '../../service/webrequest.service';
 
 @Component({
   selector: 'app-clients',
@@ -14,31 +15,30 @@ import { FormComponent } from '../form/form.component';
   styleUrls: ['./clients.component.css'],
 })
 export class ClientsComponent implements OnInit {
+  constructor(
+    private clientService: ClientService,
+    public dialog: MatDialog,
+    private webReqService: WebrequestService
+  ) {}
   // Create dataSource that takes in the client data from CLIENTS
   displayedColumns: string[] = [
     'id',
-    'clientFullName',
-    'clientID',
-    'cellNumber',
+    'name',
+    'idNum',
+    'cellphoneNum',
     'buttons',
   ];
+
   dataSource = new MatTableDataSource(CLIENTS);
 
   // Asign clients as properties of component
   clients: Client[] = [];
-
-  constructor(private clientService: ClientService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     // Used to return Observable
     this.clientService
       .getClients()
       .subscribe((clients) => (this.clients = clients));
-  }
-
-  // Give edit button function
-  deleteClient() {
-    console.log('Edit');
   }
 
   applyFilter(event: Event) {
@@ -65,5 +65,10 @@ export class ClientsComponent implements OnInit {
       console.log('The dialog was closed');
       this.animal = result;
     });
+  }
+
+  // Give delete button function
+  deleteClient() {
+    console.log('Delete');
   }
 }

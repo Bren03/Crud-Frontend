@@ -1,22 +1,23 @@
 import { Client } from './Client';
+import { WebrequestService } from './service/webrequest.service';
 
 export const CLIENTS: Client[] = [
   {
     id: 1,
-    clientFullName: 'Sannie du Preez',
-    clientID: '2638910253849',
-    cellNumber: '0657960911',
+    name: 'Sannie du Preez',
+    idNum: '2638910253849',
+    cellphoneNum: '0657960911',
   },
   {
     id: 2,
-    clientFullName: 'Piet du Plessis',
-    clientID: '2638910253849',
-    cellNumber: '0628648752',
+    name: 'Piet du Plessis',
+    idNum: '2638910253849',
+    cellphoneNum: '0628648752',
   },
   {
     id: 3,
-    clientFullName: 'Bret Steynberg',
-    clientID: '2638910253849',
-    cellNumber: '0846793624',
+    name: 'Bret Steynberg',
+    idNum: '2638910253849',
+    cellphoneNum: '0846793624',
   },
 ];

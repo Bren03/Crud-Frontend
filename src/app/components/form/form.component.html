@@ -1,15 +1,27 @@
 <div mat-dialog-content>
+  {{ data.name }}
+  <!-- [(ngModel)]="data.name" used to bind data to input in dialog -->
   <mat-card>
     <div class="separate-margin">
       <mat-label class="inputLabel"><strong>Full Name:</strong></mat-label>
-      <input class="inputBar" matInput placeholder="Full Name" #input />
+      <input
+        class="inputBar"
+        matInput
+        placeholder="Full Name"
+        [(ngModel)]="data.name"
+      />
     </div>
 
     <div class="separate-margin">
       <mat-label class="inputLabel">
         <strong>Client ID Number:</strong>
       </mat-label>
-      <input class="inputBar" matInput placeholder="Client ID Number" #input />
+      <input
+        class="inputBar"
+        matInput
+        placeholder="Client ID Number"
+        [(ngModel)]="data.idNum"
+      />
     </div>
 
     <div class="separate-margin">
@@ -20,13 +32,18 @@
         class="inputBar"
         matInput
         placeholder="Client Cellphone Number"
-        #input
+        [(ngModel)]="data.cellphoneNum"
       />
     </div>
 
     <div class="separate-margin btn">
       <button mat-button (click)="onNoClick()"><strong>Cancel</strong></button>
-      <button mat-button [mat-dialog-close]="data.client" cdkFocusInitial>
+      <button
+        mat-button
+        (click)="onSave()"
+        [mat-dialog-close]="data.client"
+        cdkFocusInitial
+      >
         {{ data.type }}
       </button>
     </div>
