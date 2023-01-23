@@ -1,0 +1,34 @@
+<div mat-dialog-content>
+  <mat-card>
+    <div class="separate-margin">
+      <mat-label class="inputLabel"><strong>Full Name:</strong></mat-label>
+      <input class="inputBar" matInput placeholder="Full Name" #input />
+    </div>
+
+    <div class="separate-margin">
+      <mat-label class="inputLabel">
+        <strong>Client ID Number:</strong>
+      </mat-label>
+      <input class="inputBar" matInput placeholder="Client ID Number" #input />
+    </div>
+
+    <div class="separate-margin">
+      <mat-label class="inputLabel">
+        <strong>Client Phone Number:</strong>
+      </mat-label>
+      <input
+        class="inputBar"
+        matInput
+        placeholder="Client Cellphone Number"
+        #input
+      />
+    </div>
+
+    <div class="separate-margin btn">
+      <button mat-button (click)="onNoClick()"><strong>Cancel</strong></button>
+      <button mat-button [mat-dialog-close]="data.client" cdkFocusInitial>
+        {{ data.type }}
+      </button>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,28 @@
+table {
+  margin: 2% auto;
+}
+
+table,
+th {
+  font-size: 20px;
+}
+
+table,
+td {
+  font-size: 18px;
+}
+
+.search {
+  width: 98%;
+  height: auto;
+  padding: 0.5%;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #eee;
+  color: #000;
+  font-size: 18px;
+}
+
+.card-size {
+  margin: 2% auto;
+}
