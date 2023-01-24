@@ -4,10 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 // Import client data from respective folders
 import { ClientService } from '../../service/client.service';
 import { Client } from '../../Client';
-import { CLIENTS } from '../../mock-clients';
 import { MatDialog } from '@angular/material/dialog';
 import { FormComponent } from '../form/form.component';
-import { WebrequestService } from '../../service/webrequest.service';
 
 @Component({
   selector: 'app-clients',
@@ -15,30 +13,31 @@ import { WebrequestService } from '../../service/webrequest.service';
   styleUrls: ['./clients.component.css'],
 })
 export class ClientsComponent implements OnInit {
-  constructor(
-    private clientService: ClientService,
-    public dialog: MatDialog,
-    private webReqService: WebrequestService
-  ) {}
+  [x: string]: any;
+  constructor(private clientService: ClientService, public dialog: MatDialog) {}
+
   // Create dataSource that takes in the client data from CLIENTS
   displayedColumns: string[] = [
-    'id',
+    'no',
     'name',
     'idNum',
     'cellphoneNum',
     'buttons',
   ];
 
-  dataSource = new MatTableDataSource(CLIENTS);
-
   // Asign clients as properties of component
   clients: Client[] = [];
 
+  dataSource: any;
+
   ngOnInit(): void {
     // Used to return Observable
+
     this.clientService
       .getClients()
-      .subscribe((clients) => (this.clients = clients));
+      .subscribe(
+        (clients) => (this.dataSource = new MatTableDataSource<Client>(clients))
+      );
   }
 
   applyFilter(event: Event) {
@@ -67,8 +66,17 @@ export class ClientsComponent implements OnInit {
     });
   }
 
+  client: Client = {
+    no: 0,
+    _id: '',
+    name: '',
+    idNum: '',
+    cellphoneNum: '',
+  };
+
   // Give delete button function
   deleteClient() {
     console.log('Delete');
+    _id: this.client._id;
   }
 }

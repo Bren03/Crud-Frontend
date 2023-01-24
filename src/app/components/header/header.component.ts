@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   client: Client = {
-    id: 0,
+    no: 0,
     name: '',
     idNum: '',
     cellphoneNum: '',
@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
       if (result) {
         // this.client = result;
         this.client = {
-          id: 0,
+          no: 0,
           name: '',
           idNum: '',
           cellphoneNum: '',
