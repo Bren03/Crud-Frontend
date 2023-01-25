@@ -32,12 +32,17 @@ export class ClientService {
     return clients;
   }
 
-  deleteClient(): Observable<any> {
+  deleteClientID(id: any) {
     // Used to make CLIENTS a Observable
     // const clients = of(CLIENTS);
     // Returns clients
+    return this.webReqService.delete(`clients/${id}`);
+  }
 
-    const deleteClients = this.webReqService.delete('clients');
-    return deleteClients;
+  editClients(client: Client) {
+    console.log('Edit a client');
+    // Send web request to create client
+    console.log(client._id);
+    return this.webReqService.patch(`clients/${client._id}`, client);
   }
 }

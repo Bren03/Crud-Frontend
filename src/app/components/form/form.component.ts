@@ -49,11 +49,20 @@ export class FormComponent {
 
   onSave() {
     // Save operation
-    console.log('create a client.....', this.data);
-    this.clientService.createClient(this.data).subscribe((response: any) => {
-      console.log(response);
-      this.dialogRef.close(true);
-    });
+    if (this.data.type === 'Add') {
+      console.log('create a client.....', this.data);
+      this.clientService.createClient(this.data).subscribe((response: any) => {
+        console.log(response);
+        this.dialogRef.close(true);
+      });
+    }
+    if (this.data.type === 'Edit') {
+      console.log('edit a client.....', this.data);
+      this.clientService.editClients(this.data).subscribe((response: any) => {
+        console.log('hdahdadh', response);
+        this.dialogRef.close(true);
+      });
+    }
 
     //   this.dialogRef.close({
     //     id: 0,

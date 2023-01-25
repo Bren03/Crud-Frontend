@@ -13,7 +13,6 @@ import { FormComponent } from '../form/form.component';
   styleUrls: ['./clients.component.css'],
 })
 export class ClientsComponent implements OnInit {
-  [x: string]: any;
   constructor(private clientService: ClientService, public dialog: MatDialog) {}
 
   // Create dataSource that takes in the client data from CLIENTS
@@ -46,37 +45,43 @@ export class ClientsComponent implements OnInit {
   }
 
   // Give edit button function
-
   // animal!: string;
   // name!: string;
 
-  animal = 'Panda';
-  name = 'Branden';
-
-  editClient(): void {
-    console.log('The dialog was closed');
+  editClient(client: Client): void {
+    console.log(client._id);
 
     const dialogRef = this.dialog.open(FormComponent, {
-      data: { name: this.name, animal: this.animal, type: 'Edit' },
+      data: {
+        _id: client._id,
+        name: client.name,
+        idNum: client.idNum,
+        cellphoneNum: client.cellphoneNum,
+        type: 'Edit',
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      console.log('The dialog was closed', result);
+      window.location.reload();
+      if (result) {
+        // this.client = result;
+        client = {
+          no: 0,
+          name: '',
+          idNum: '',
+          cellphoneNum: '',
+        };
+      }
     });
   }
 
-  client: Client = {
-    no: 0,
-    _id: '',
-    name: '',
-    idNum: '',
-    cellphoneNum: '',
-  };
-
   // Give delete button function
-  deleteClient() {
-    console.log('Delete');
-    _id: this.client._id;
+  deleteClient(client: Client) {
+    console.log('Delete', client._id);
+    this.clientService.deleteClientID(client._id).subscribe((res: any) => {
+      console.log(res);
+    });
+    window.location.reload();
   }
 }

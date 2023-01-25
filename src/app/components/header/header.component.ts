@@ -43,6 +43,7 @@ export class HeaderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed', result);
+      window.location.reload();
       if (result) {
         // this.client = result;
         this.client = {
