@@ -63,7 +63,6 @@ export class ClientsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed', result);
-      window.location.reload();
       if (result) {
         // this.client = result;
         client = {
@@ -82,6 +81,5 @@ export class ClientsComponent implements OnInit {
     this.clientService.deleteClientID(client._id).subscribe((res: any) => {
       console.log(res);
     });
-    window.location.reload();
   }
 }
