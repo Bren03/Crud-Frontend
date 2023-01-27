@@ -1,0 +1,16 @@
+<div class="container">
+  <mat-card class="card">
+    <h1><strong>Log In</strong></h1>
+    <div class="separate-margin">
+      <mat-label class="inputLabel"><strong>User Name:</strong></mat-label>
+      <input class="inputBar" matInput placeholder="User Name" />
+    </div>
+    <div class="separate-margin">
+      <mat-label class="inputLabel"><strong>Password:</strong></mat-label>
+      <input class="inputBar" matInput placeholder="Password" />
+    </div>
+
+    <app-button class="btn btnLogIn" text="Log In" (btnClick)="logIn()">
+    </app-button>
+  </mat-card>
+</div>

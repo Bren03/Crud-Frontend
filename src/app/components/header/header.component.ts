@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormComponent } from '../form/form.component';
 // import clients
 import { Client } from '../../Client';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,9 @@ export class HeaderComponent implements OnInit {
   title: string = 'Client Information';
 
   ngOnInit(): void {}
+  logInPage(): void {
+    this.router.navigateByUrl('login');
+  }
 
   client: Client = {
     no: 0,
@@ -23,7 +27,7 @@ export class HeaderComponent implements OnInit {
   };
   // Give add button function
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private router: Router) {}
 
   getClientobj() {
     console.log(this.client);
