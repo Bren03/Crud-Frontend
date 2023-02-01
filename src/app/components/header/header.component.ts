@@ -15,8 +15,9 @@ export class HeaderComponent implements OnInit {
   title: string = 'Client Information';
 
   ngOnInit(): void {}
-  logInPage(): void {
-    this.router.navigateByUrl('login');
+  logOut(): void {
+    // this.router.navigateByUrl('login');
+    location.reload();
   }
 
   client: Client = {

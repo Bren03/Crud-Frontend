@@ -2,16 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ClientsPageRoutingModule } from './clients-page-routing.module';
-import { ClientsPageComponent } from './clients-page.component';
-
+// import { ClientsPageComponent } from './clients-page.component';
 
 @NgModule({
   declarations: [
-    ClientsPageComponent
+    /* ClientsPageComponent */
   ],
-  imports: [
-    CommonModule,
-    ClientsPageRoutingModule
-  ]
+  imports: [CommonModule, ClientsPageRoutingModule],
 })
-export class ClientsPageModule { }
+export class ClientsPageModule {}

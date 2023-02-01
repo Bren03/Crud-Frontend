@@ -20,6 +20,9 @@ import { ClientsComponent } from './components/clients/clients.component';
 import { FormComponent } from './components/form/form.component';
 import { ClientsPageComponent } from './pages/clients-page/clients-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { AuthGuardService } from './service/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -43,10 +46,11 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     MatFormFieldModule,
     MatCardModule,
     MatDialogModule,
+    MatSnackBarModule,
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

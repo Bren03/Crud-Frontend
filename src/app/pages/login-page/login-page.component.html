@@ -1,16 +1,35 @@
 <div class="container">
+  <!-- {{ formData | json }} -->
+
   <mat-card class="card">
     <h1><strong>Log In</strong></h1>
     <div class="separate-margin">
       <mat-label class="inputLabel"><strong>User Name:</strong></mat-label>
-      <input class="inputBar" matInput placeholder="User Name" />
+      <input
+        class="inputBar"
+        [(ngModel)]="formData.user"
+        matInput
+        placeholder="User Name"
+      />
     </div>
     <div class="separate-margin">
       <mat-label class="inputLabel"><strong>Password:</strong></mat-label>
-      <input class="inputBar" matInput placeholder="Password" />
+      <input
+        class="inputBar"
+        type="password"
+        [(ngModel)]="formData.password"
+        matInput
+        placeholder="Password"
+      />
     </div>
 
-    <app-button class="btn btnLogIn" text="Log In" (btnClick)="logIn()">
+    <!-- isDisabled added in the button component used to disable button  -->
+    <app-button
+      [isDisabled]="formData.password == '' || formData.user == ''"
+      class="btn btnLogIn"
+      text="Log In"
+      (btnClick)="logIn()"
+    >
     </app-button>
   </mat-card>
 </div>

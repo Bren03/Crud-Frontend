@@ -7,13 +7,20 @@ import { Client } from '../../Client';
 import { MatDialog } from '@angular/material/dialog';
 import { FormComponent } from '../form/form.component';
 
+// Import login service fot token
+import { LoginService } from 'src/app/service/login.service';
+
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.css'],
 })
 export class ClientsComponent implements OnInit {
-  constructor(private clientService: ClientService, public dialog: MatDialog) {}
+  constructor(
+    private clientService: ClientService,
+    public dialog: MatDialog,
+    public loginService: LoginService
+  ) {}
 
   // Create dataSource that takes in the client data from CLIENTS
   displayedColumns: string[] = [
@@ -76,6 +83,7 @@ export class ClientsComponent implements OnInit {
   }
 
   // Give delete button function
+
   deleteClient(client: Client) {
     console.log('Delete', client._id);
     this.clientService.deleteClientID(client._id).subscribe((res: any) => {
