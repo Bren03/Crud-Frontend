@@ -36,7 +36,7 @@ export class SignUpPageComponent {
   };
 
   cancel(): void {
-    this.router.navigateByUrl('clients');
+    this.router.navigateByUrl('users');
   }
 
   signUp() {
@@ -44,7 +44,7 @@ export class SignUpPageComponent {
     this.userService.createUser(this.userSingUp).subscribe((response: any) => {
       console.log(response);
       this.openSnackBar(response.message);
-      this.router.navigateByUrl('clients');
+      this.router.navigateByUrl('users');
     });
   }
 }
