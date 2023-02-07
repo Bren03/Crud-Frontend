@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 // import { ClientService } from '../../service/client.service';
 import { FormComponent } from '../form/form.component';
@@ -12,12 +12,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  title: string = 'Client Information';
+  @Input() text!: string;
 
   ngOnInit(): void {}
   logOut(): void {
-    // this.router.navigateByUrl('login');
-    location.reload();
+    window.localStorage.setItem('token', '');
+    this.router.navigateByUrl('login');
   }
 
   client: Client = {

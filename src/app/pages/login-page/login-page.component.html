@@ -24,12 +24,14 @@
     </div>
 
     <!-- isDisabled added in the button component used to disable button  -->
-    <app-button
-      [isDisabled]="formData.password == '' || formData.user == ''"
-      class="btn btnLogIn"
-      text="Log In"
-      (btnClick)="logIn()"
-    >
-    </app-button>
+    <div class="btnLogIn">
+      <!-- [isDisabled]="formData.password == '' || formData.user == ''" -->
+      <app-button class="btn" text="Log In" (btnClick)="logIn()"> </app-button>
+    </div>
   </mat-card>
+  {{ adminUser | json }}
+
+  <br />
+
+  {{ loginUser | json }}
 </div>

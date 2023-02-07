@@ -38,7 +38,6 @@ export class ClientsComponent implements OnInit {
 
   ngOnInit(): void {
     // Used to return Observable
-
     this.clientService
       .getClients()
       .subscribe(
@@ -52,9 +51,6 @@ export class ClientsComponent implements OnInit {
   }
 
   // Give edit button function
-  // animal!: string;
-  // name!: string;
-
   editClient(client: Client): void {
     console.log(client._id);
 
@@ -89,5 +85,6 @@ export class ClientsComponent implements OnInit {
     this.clientService.deleteClientID(client._id).subscribe((res: any) => {
       console.log(res);
     });
+    this.dataSource.setD;
   }
 }

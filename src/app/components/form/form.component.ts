@@ -5,25 +5,6 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { ClientService } from '../../service/client.service';
-// import clients
-// import { Client } from '../../Client';
-
-// Import client data from respective folders
-// import { ClientService } from '../../service/client.service';
-// import { Client } from '../../Client';
-// import { CLIENTS } from '../../mock-clients';
-
-// export interface DialogData {
-//   animal: string;
-//   name: string;
-// }
-
-// export class DialogOverviewExample {
-//   animal!: string;
-//   name!: string;
-
-//   constructor(public dialog: MatDialog) {}
-// }
 
 @Component({
   selector: 'app-form',
@@ -39,12 +20,6 @@ export class FormComponent {
 
   onNoClick(): void {
     this.dialogRef.close(false);
-    // this.dialogRef.close({
-    //   id: 0,
-    //   clientFullName: '123',
-    //   clientID: '123',
-    //   cellNumber: '123',
-    // });
   }
 
   onSave() {
@@ -63,12 +38,5 @@ export class FormComponent {
         this.dialogRef.close(true);
       });
     }
-
-    //   this.dialogRef.close({
-    //     id: 0,
-    //     clientFullName: '123',
-    //     clientID: '123',
-    //     cellNumber: '123',
-    //   });
   }
 }

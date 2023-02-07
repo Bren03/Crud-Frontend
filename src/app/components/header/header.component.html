@@ -3,8 +3,7 @@
 <div class="container">
   <mat-grid-list cols="4" rowHeight="5:1">
     <mat-grid-tile>
-      <!-- Add title -->
-      <h1>{{ title }}</h1>
+      <h1>{{ text }}</h1>
     </mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
@@ -13,7 +12,11 @@
       <app-button class="btn btnLogIn" text="Log Out" (btnClick)="logOut()">
       </app-button>
 
-      <app-button class="btn" text="Add" (btnClick)="addClient()"></app-button>
+      <app-button
+        class="btn"
+        text="Add Client"
+        (btnClick)="addClient()"
+      ></app-button>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

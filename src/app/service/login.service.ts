@@ -21,48 +21,83 @@ export class LoginService {
     private webReqService: WebrequestService,
     private router: Router,
     private _snackBar: MatSnackBar
-  ) {}
+  ) {
+    // const token = window.localStorage.getItem('token');
+    // console.log('service token', token);
+    // this.user = { name: '123', admin: true };
+    // DO BACKEND CHECK
+  }
 
   openSnackBar(message: string) {
     this._snackBar.open(message, '', { duration: 3000 });
   }
 
-  loginUser(user: User) {
-    // Send web request to create client
-    // return this.webReqService.post('users/login', user);
-    console.log('User', user);
+  async validateToken(token: any) {
+    // const token = window.localStorage.getItem('token');
+    const body = {
+      token: token,
+    };
+    await this.webReqService
+      .post(`users/validate`, body)
+      .subscribe(async (response: any) => {
+        console.log('response', response);
 
-    this.webReqService.post('users/login', user).subscribe(
+        window.localStorage.setItem('token', response.token);
+        const decToken: any = await jwt_decode(response.token);
+        this.user = decToken;
+
+        this.router.navigateByUrl('clients');
+        // Do stuff with response
+      });
+  }
+
+  loginUser(user: User) {
+    // Send web request to login user
+    console.log('User', user);
+    const token = window.localStorage.getItem('token');
+    this.webReqService.post(`users/login?token=${token}`, user).subscribe(
       async (response: any) => {
         let token = response.token;
+        window.localStorage.setItem('token', token);
 
         const decToken: any = await jwt_decode(token);
-
         this.user = decToken;
 
         console.log('Auth success', response.message);
-
         console.log('this.user', this.user);
 
         this.openSnackBar(response.message);
-        // if (decToken.admin == true) {
-        //   this.user = true;
-        // } else {
-        //   this.user = false;
-        // }
         this.router.navigateByUrl('clients');
-
-        // return decToken.userID ? true : false;
-
-        // } else {
-        //   this.router.navigateByUrl('clients');
-        // }
       },
       (error) => {
         console.log('error', error);
         this.openSnackBar(error.error.message);
-        // return false;
-        // show error message for fqailed logfin
+        // show error message for failed logfin
+      }
+    );
+  }
+  signUpUser(user: User) {
+    // Send web request to login user
+    console.log('User', user);
+    const token = window.localStorage.getItem('token');
+    this.webReqService.post(`users/login?token=${token}`, user).subscribe(
+      async (response: any) => {
+        let token = response.token;
+        window.localStorage.setItem('token', token);
+
+        const decToken: any = await jwt_decode(token);
+        this.user = decToken;
+
+        console.log('Auth success', response.message);
+        console.log('this.user', this.user);
+
+        this.openSnackBar(response.message);
+        this.router.navigateByUrl('signUp');
+      },
+      (error) => {
+        console.log('error', error);
+        this.openSnackBar(error.error.message);
+        // show error message for failed logfin
       }
     );
   }

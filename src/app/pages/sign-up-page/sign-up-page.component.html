@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>User Sign up</h1>
+
+  {{ userSingUp | json }}
+  <!-- [(ngModel)]="data.name" used to bind data to input in dialog -->
+  <mat-card>
+    <mat-form-field class="mtform" appearance="fill">
+      <mat-label>User Name</mat-label>
+      <input matInput [(ngModel)]="userSingUp.user" />
+    </mat-form-field>
+
+    <mat-form-field class="mtform" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput [(ngModel)]="userSingUp.password" />
+    </mat-form-field>
+
+    <div class="adminCBX">
+      <section class="example-section" [formGroup]="adminUser">
+        <mat-label>
+          <strong>If user is a Admin user tick the Admin box:</strong>
+        </mat-label>
+        <div>
+          <mat-checkbox
+            class="cbx"
+            formControlName="admin"
+            [(ngModel)]="userSingUp.admin"
+          >
+            Admin
+          </mat-checkbox>
+        </div>
+      </section>
+    </div>
+
+    <div class="btn btnContainer">
+      <app-button class="btn" text="Cancel" (btnClick)="cancel()"></app-button>
+      <app-button class="btn" text="Sign Up" (btnClick)="signUp()"></app-button>
+    </div>
+  </mat-card>
+</div>
