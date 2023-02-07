@@ -18,12 +18,12 @@ const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'sign-up',
     component: SignUpPageComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: LoginPageComponent },

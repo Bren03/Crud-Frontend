@@ -1,2 +1,17 @@
+<div class="container" *ngIf="loginService.user?.admin == true">
+  <nav fitInkBarToContent mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a
+      mat-tab-link
+      *ngFor="let link of links; index as i"
+      [routerLink]="link.link"
+      (click)="activeLink = link.link"
+      [active]="activeLink == link.link"
+    >
+      {{ link.name }}
+    </a>
+  </nav>
+  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+</div>
+
 <!-- Use router-outlet in html where you call the page -->
 <router-outlet></router-outlet>

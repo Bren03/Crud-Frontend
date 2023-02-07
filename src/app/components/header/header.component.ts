@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   logOut(): void {
     window.localStorage.setItem('token', '');
     this.router.navigateByUrl('login');
+    location.reload();
   }
 
   client: Client = {

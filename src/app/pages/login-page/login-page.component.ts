@@ -36,12 +36,12 @@ export class LoginPageComponent {
 
   async logIn() {
     // encript password
-    if (this.formData.user == '' && this.formData.password == '') {
-      this.formData = {
-        user: 'testAdminUser',
-        password: 'testAdminPassword',
-      };
-    }
+    // if (this.formData.user == '' && this.formData.password == '') {
+    //   this.formData = {
+    //     user: 'testAdminUser',
+    //     password: 'testAdminPassword',
+    //   };
+    // }
 
     const encPassword = CryptoJS.AES.encrypt(
       this.formData.password,
