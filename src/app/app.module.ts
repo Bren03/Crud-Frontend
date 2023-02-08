@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -63,6 +64,7 @@ import { UsersComponent } from './pages/users/users.component';
     MatInputModule,
     MatCheckboxModule,
     ReactiveFormsModule,
+    MatIconModule,
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent],

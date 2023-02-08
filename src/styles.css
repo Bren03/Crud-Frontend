@@ -13,6 +13,11 @@
   margin: 2%;
 }
 
+.btnContainer {
+  display: flex;
+  margin: 2%;
+}
+
 html,
 body {
   height: 100%;
