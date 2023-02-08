@@ -1,0 +1,106 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<div class="container">
+  <div>
+    <mat-grid-list cols="4" rowHeight="5:1">
+      <mat-grid-tile>
+        <h1>User Information</h1>
+      </mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile>
+        <!-- Add buttons -->
+        <app-button class="btn btnLogIn" text="Log Out" (btnClick)="logOut()">
+        </app-button>
+
+        <app-button
+          class="btn"
+          text="Add User"
+          (btnClick)="addUser()"
+        ></app-button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <div>
+    <!-- Add search bar -->
+    <mat-card class="card-size">
+      <!-- {{ clientsData | json }} -->
+      <mat-card-content>
+        <input
+          class="search"
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Search"
+          #input
+        />
+
+        <section class="example-container mat-elevation-z8" tabindex="0">
+          <table mat-table [dataSource]="dataSource">
+            <!-- Position Column -->
+            <ng-container matColumnDef="no">
+              <th mat-header-cell *matHeaderCellDef>No.</th>
+              <td mat-cell *matCellDef="let element; let i = index">
+                {{ i + 1 }}
+              </td>
+            </ng-container>
+
+            <!-- User name Column -->
+            <ng-container matColumnDef="user">
+              <th mat-header-cell *matHeaderCellDef>User Name</th>
+              <td mat-cell *matCellDef="let element">{{ element.user }}</td>
+            </ng-container>
+
+            <!-- Admin Column -->
+            <ng-container matColumnDef="admin">
+              <th mat-header-cell *matHeaderCellDef>Admin User</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element?.admin }}
+              </td>
+            </ng-container>
+
+            <!-- Date Column -->
+            <ng-container matColumnDef="dateCreated">
+              <th mat-header-cell *matHeaderCellDef>Date Created</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.dateCreated | date : "yyyy/MM/dd" }}
+              </td>
+            </ng-container>
+
+            <!-- Button Column -->
+            <ng-container matColumnDef="buttons">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element">
+                <div class="btn">
+                  <!-- <app-button
+                    class="btn"
+                    text="Edit"
+                    (btnClick)="editUser(element)"
+                  ></app-button> -->
+                  <app-button
+                    class="btn"
+                    text="Delete"
+                    (btnClick)="deleteUser(element)"
+                    *ngIf="loginService.user?.admin == true"
+                  ></app-button>
+                </div>
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">
+                No data user matching search "{{ input.value }}"
+              </td>
+            </tr>
+          </table>
+        </section>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

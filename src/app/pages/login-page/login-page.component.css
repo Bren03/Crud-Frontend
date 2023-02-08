@@ -1,0 +1,30 @@
+h1 {
+  font-size: 35px;
+  text-decoration: underline;
+}
+
+.separate-margin {
+  margin: 1% 0;
+}
+
+.inputBar {
+  width: 90%;
+  padding: 1%;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #eee;
+  font-size: 16px;
+}
+
+.inputLabel {
+  font-size: 20px;
+}
+
+.card {
+  padding: 10%;
+}
+
+.btnLogIn {
+  display: flex;
+  justify-content: center;
+}

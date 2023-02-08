@@ -1,6 +1,7 @@
 export interface Client {
-  id?: number;
-  clientFullName: string;
-  clientID: string;
-  cellNumber: string;
+  no?: number;
+  _id?: string;
+  name: string;
+  idNum: string;
+  cellphoneNum: string;
 }

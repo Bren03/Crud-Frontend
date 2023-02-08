@@ -1,0 +1,17 @@
+.mtform {
+  margin: 0.5% 1%;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.adminCBX {
+  font-size: 20px;
+  padding: 1%;
+}
+
+.cbx {
+  padding: 0.5%;
+}

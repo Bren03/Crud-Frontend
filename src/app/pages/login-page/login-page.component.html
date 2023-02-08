@@ -1,0 +1,42 @@
+<div class="container">
+  <!-- {{ formData | json }} -->
+
+  <mat-card class="card">
+    <h1><strong>Log In</strong></h1>
+    <div class="separate-margin">
+      <mat-label class="inputLabel"><strong>User Name:</strong></mat-label>
+      <input
+        class="inputBar"
+        [(ngModel)]="formData.user"
+        matInput
+        placeholder="User Name"
+      />
+    </div>
+    <div class="separate-margin">
+      <mat-label class="inputLabel"><strong>Password:</strong></mat-label>
+      <input
+        class="inputBar"
+        type="password"
+        [(ngModel)]="formData.password"
+        matInput
+        placeholder="Password"
+      />
+    </div>
+
+    <!-- isDisabled added in the button component used to disable button  -->
+    <div class="btnLogIn">
+      <app-button
+        [isDisabled]="formData.password == '' || formData.user == ''"
+        class="btn"
+        text="Log In"
+        (btnClick)="logIn()"
+      >
+      </app-button>
+    </div>
+  </mat-card>
+  <!-- {{ adminUser | json }}
+
+  <br />
+
+  {{ loginUser | json }} -->
+</div>
